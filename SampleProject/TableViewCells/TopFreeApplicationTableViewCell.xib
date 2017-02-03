@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="67" id="KGk-i7-Jjw" customClass="TopFreeApplicationTableViewCell" customModule="SampleProject" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="67"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="66.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4HW-Ov-ckG">
+                        <rect key="frame" x="9" y="11" width="34" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="34" id="jmo-PB-don"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b7b-0O-cgd">
+                        <rect key="frame" x="47" y="8" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="OHB-ME-QJp"/>
+                            <constraint firstAttribute="width" constant="50" id="ZjM-JD-Xzv"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" red="0.86645124350000002" green="0.86645124350000002" blue="0.86645124350000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="maskToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6vx-22-KRC">
+                        <rect key="frame" x="105" y="14" width="207" height="38.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tZA-RO-9kC" userLabel="BottomLine">
+                        <rect key="frame" x="15" y="65" width="305" height="1"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="oFT-BR-Jxj">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="hairLineConstraint">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="4HW-Ov-ckG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="3Ib-OQ-Wt2"/>
+                    <constraint firstItem="tZA-RO-9kC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="3PW-tO-kKd"/>
+                    <constraint firstItem="b7b-0O-cgd" firstAttribute="leading" secondItem="4HW-Ov-ckG" secondAttribute="trailing" constant="4" id="8oS-tX-rKg"/>
+                    <constraint firstAttribute="bottom" secondItem="6vx-22-KRC" secondAttribute="bottom" constant="14" id="Ft1-Dm-ljU"/>
+                    <constraint firstItem="tZA-RO-9kC" firstAttribute="top" secondItem="b7b-0O-cgd" secondAttribute="bottom" constant="7" id="GvU-GS-ldW"/>
+                    <constraint firstAttribute="bottom" secondItem="tZA-RO-9kC" secondAttribute="bottom" id="NHt-Hw-B8m"/>
+                    <constraint firstItem="6vx-22-KRC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="aQr-HT-dks"/>
+                    <constraint firstAttribute="trailing" secondItem="tZA-RO-9kC" secondAttribute="trailing" id="bsD-BK-Yed"/>
+                    <constraint firstAttribute="trailing" secondItem="6vx-22-KRC" secondAttribute="trailing" constant="8" id="cbc-fm-KG7"/>
+                    <constraint firstItem="6vx-22-KRC" firstAttribute="leading" secondItem="b7b-0O-cgd" secondAttribute="trailing" constant="8" id="dfX-ZJ-cqY"/>
+                    <constraint firstAttribute="bottom" secondItem="4HW-Ov-ckG" secondAttribute="bottom" constant="11" id="dlE-U3-cfG"/>
+                    <constraint firstItem="b7b-0O-cgd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="qPh-WB-COG"/>
+                    <constraint firstItem="4HW-Ov-ckG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="9" id="u4d-Sp-bOh"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="appIconImageView" destination="b7b-0O-cgd" id="c9c-2G-yPV"/>
+                <outlet property="rankLabel" destination="4HW-Ov-ckG" id="Fj8-6j-xyh"/>
+                <outlet property="titleLabel" destination="6vx-22-KRC" id="dlv-Gg-klm"/>
+            </connections>
+            <point key="canvasLocation" x="-95" y="-285"/>
+        </tableViewCell>
+    </objects>
+</document>
