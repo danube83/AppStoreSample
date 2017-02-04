@@ -29,6 +29,7 @@ class DetailTopTableViewCell: UITableViewCell {
     
 }
 
+
 extension DetailTopTableViewCell: ReusableView {
     
 }

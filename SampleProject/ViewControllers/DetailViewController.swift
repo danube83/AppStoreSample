@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 
 fileprivate enum DetailCell: Int {
     case top = 0

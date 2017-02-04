@@ -9,6 +9,10 @@
 import UIKit
 import SDWebImage
 
+protocol TopFreeApplicationProtocolForInteractor {
+    func prepare(by data: TopFreeApplicationModel, rank: Int)
+}
+
 class TopFreeApplicationTableViewCell: UITableViewCell {
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
@@ -34,8 +38,8 @@ class TopFreeApplicationTableViewCell: UITableViewCell {
     
 }
 
-extension TopFreeApplicationTableViewCell {
-    func prepare(with data:TopFreeApplicationModel, rank: Int) {
+extension TopFreeApplicationTableViewCell: TopFreeApplicationProtocolForInteractor {
+    func prepare(by data:TopFreeApplicationModel, rank: Int) {
         rankLabel.text = "\(rank)"
         titleLabel.text = data.title
         if let imageURL = data.appIconImageURL {
@@ -43,7 +47,6 @@ extension TopFreeApplicationTableViewCell {
         }
     }
 }
-
 
 extension TopFreeApplicationTableViewCell: ReusableView {
     

@@ -7,36 +7,23 @@
 //
 
 import UIKit
-import Alamofire
-import AlamofireObjectMapper
+
 
 fileprivate let estimatedRowDefaultHeight: CGFloat = 67.0
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    fileprivate var selectedRow = -1
-    fileprivate var topFreeApplications = [TopFreeApplicationModel]() {
-        didSet {
-            tableView.reloadData()
-        }
-    }
-    
+    let presenter = HomePresenter()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
         title = "Finance Top 50".localized
-        
         tableView.estimatedRowHeight = estimatedRowDefaultHeight;
-        tableView.register(TopFreeApplicationTableViewCell.self)
-        
-        
-        let api = topFreeApplicationAPI()
-        send(api: api, keyPath: "feed.entry") { [unowned self] (response: [TopFreeApplicationModel]?) in
-            guard let unwrappedResponse = response else {
-                return
-            }
-            self.topFreeApplications = unwrappedResponse
-        }
+        presenter.viewController = self
+        presenter.viewControllerDidLoad()
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,17 +35,13 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDataSource {
     @available(iOS 2.0, *)
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return topFreeApplications.count;
+        return presenter.countOfItem()
     }
     
     @available(iOS 2.0, *)
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(for: indexPath) as TopFreeApplicationTableViewCell
-        if let topFreeApplication = topFreeApplications[safeIndex: indexPath.row] {
-            cell.prepare(with: topFreeApplication, rank: indexPath.row + 1)
-        }
-        return cell
+        return presenter.cell(at: indexPath)
     }
     
 }
@@ -66,11 +49,11 @@ extension HomeViewController: UITableViewDataSource {
 extension HomeViewController: UITableViewDelegate {
     @available(iOS 2.0, *)
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        selectedRow = indexPath.row
-        self.performSegue(withIdentifier: "showDetail", sender: self)
+        
+        presenter.didSelect(at: indexPath)
     }
 }
+
 
 //MARK: prepare for segue
 extension HomeViewController {
@@ -85,7 +68,7 @@ extension HomeViewController {
                 return
             }
             
-            if let applicationID = topFreeApplications[safeIndex: selectedRow]?.identifier {
+            if let applicationID = presenter.applicationID {
                 destination.applicationID = applicationID
             }
             
