@@ -21,6 +21,8 @@ class ApplicationDetailModel: Mappable {
     var userRatingCountForCurrentVersion: Int?
     var description: String?
     
+    var screenshots = [UIImageView]()
+    
     required init?(map: Map) {
         
     }

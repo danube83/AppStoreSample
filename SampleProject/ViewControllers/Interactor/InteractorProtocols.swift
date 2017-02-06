@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol CellInteratorable {
+protocol CellMakable {
     func cell(at indexPath: IndexPath, of tableView: UITableView ) -> UITableViewCell
 }
 

@@ -22,6 +22,7 @@ class DetailViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         tableView.estimatedRowHeight = estimatedRowDefaultHeight
+    
         presenter.viewController = self
         presenter.viewControllerDidLoad(with: applicationID)
     }

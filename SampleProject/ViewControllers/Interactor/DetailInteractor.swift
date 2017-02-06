@@ -8,10 +8,23 @@
 
 import UIKit
 
-enum DetailCell: Int {
+fileprivate enum DetailCell: Int {
     case top = 0
-    //case imageSlide
+    case imageSlide
     case description
+    
+    var indexPath: IndexPath {
+        return IndexPath(row: self.rawValue, section: 0)
+    }
+    
+}
+
+fileprivate func == (lhs: Int, rhs: DetailCell) -> Bool {
+    return lhs == rhs.rawValue
+}
+
+protocol DetailInteracterDelegate: InteracterDelegate {
+    func finishedImageLoad(at indexPath: IndexPath)
 }
 
 protocol DetailDataAccessible {
@@ -20,31 +33,47 @@ protocol DetailDataAccessible {
 
 class DetailInteractor {
     let dataProvider = DetailDataProvider()
-    weak var delegate: InteracterDelegate?
+    weak var delegate: DetailInteracterDelegate?
     var applicationID: String = ""
-    init () {
-        self.dataProvider.delegate = self
-    }
 }
+
+
 
 extension DetailInteractor: DetailDataAccessible {
     var countOfItem: Int {
-        return 2
+        var count = 1
+        if let screenshotUrls = dataProvider.applicationDetail?.screenshotUrls,
+            screenshotUrls.count > 0 {
+            count += 1
+        }
+        
+        if (dataProvider.applicationDetail?.description) != nil {
+            count += 1
+        }
+        
+        return count
     }
 }
 
 extension DetailInteractor: DataLoadable {
     func loadData() {
-        dataProvider.loadDetailData(with: applicationID)
+        dataProvider.loadDetailData(with: applicationID) { [weak self] in
+            self?.delegate?.finishedDataLoad()
+            self?.dataProvider.loadScreenshots { [weak self] in
+                self?.delegate?.finishedImageLoad(at: DetailCell.imageSlide.indexPath)
+            }
+        }
     }
 }
 
-extension DetailInteractor: CellInteratorable {
+extension DetailInteractor: CellMakable {
     func cell(at indexPath: IndexPath, of tableView: UITableView) -> UITableViewCell {
         
         var cell: UITableViewCell
-        if indexPath.row == DetailCell.top.rawValue {
+        if indexPath.row == DetailCell.top {
             cell = tableView.dequeueReusableCell(for: indexPath) as DetailTopTableViewCell
+        } else if indexPath.row == DetailCell.imageSlide {
+            cell = tableView.dequeueReusableCell(for: indexPath) as DetailImageSlideTableViewCell
         } else {
             cell = tableView.dequeueReusableCell(for: indexPath) as DetailDescTableViewCell
         }
@@ -53,11 +82,5 @@ extension DetailInteractor: CellInteratorable {
         aCell?.prepare(by: dataProvider.applicationDetail)
         
         return cell
-    }
-}
-
-extension DetailInteractor: DataProviderDelegate {
-    func didReceiveData() {
-        delegate?.finishedDataLoad()
     }
 }

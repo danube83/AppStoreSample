@@ -7,19 +7,19 @@
 //
 
 import Foundation
+import SDWebImage
 
 class DetailDataProvider {
-    weak var delegate: DataProviderDelegate?
+    var applicationDetail: ApplicationDetailModel?
     
-    var applicationDetail: ApplicationDetailModel? {
-        didSet {
-            delegate?.didReceiveData()
-        }
-    }
-    
-    func loadDetailData(with applicationID: String) {
+    func loadDetailData(with applicationID: String, completion: @escaping ()->()) {
         let api = applicationDetailAPI(with: applicationID)
         send(api: api, keyPath: "results") { [weak self] (response: ApplicationDetailModel?) in
+            
+            defer {
+                completion()
+            }
+            
             guard let unwrrapedResponse = response else {
                 return
             }
@@ -27,6 +27,32 @@ class DetailDataProvider {
             self?.applicationDetail = unwrrapedResponse
         }
 
+    }
+    
+    func loadScreenshots(completion: @escaping () -> ()) {
+        guard let screenshotUrls = applicationDetail?.screenshotUrls else {
+            completion()
+            return
+        }
+
+        var itemCount = 0
+        for screenshotURL in screenshotUrls {
+            SDWebImageManager.shared().loadImage(with: URL(string: screenshotURL), options: [], progress: nil, completed: { [weak self] (image, data, error, cacheType, isSuccess, url) in
+                
+                itemCount += 1
+                if isSuccess, let image = image {
+                    
+                    let imageView = UIImageView(image: image.deviceScaleImage().borderedImage(color: UIColor.lightGray, width: 1))
+                    self?.applicationDetail?.screenshots.append(imageView)
+                    if itemCount == screenshotUrls.count {
+                        completion()
+                    }
+                }
+                
+                
+            })
+            
+        }
     }
 
 }

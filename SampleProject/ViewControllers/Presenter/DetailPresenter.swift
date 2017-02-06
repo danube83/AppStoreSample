@@ -46,8 +46,12 @@ extension DetailPresenter: DetailPresenterable {
 }
 
 
-extension DetailPresenter: InteracterDelegate {
+extension DetailPresenter: DetailInteracterDelegate {
     func finishedDataLoad() {
         tableView?.reloadData()
+    }
+    
+    func finishedImageLoad(at indexPath: IndexPath) {
+        tableView?.reloadRows(at: [indexPath], with: .none)
     }
 }

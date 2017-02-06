@@ -42,7 +42,7 @@ extension HomePresenter: HomePresenterable {
     }
 }
 
-extension HomePresenter: TableViewSelectable {
+extension HomePresenter: TableViewCellSelectable {
     func didSelect(at indexPath: IndexPath) {
         tableView?.deselectRow(at: indexPath, animated: true)
         selectedRow = indexPath.row

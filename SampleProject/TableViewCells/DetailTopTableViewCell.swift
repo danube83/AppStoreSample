@@ -8,6 +8,7 @@
 
 import UIKit
 import Cosmos
+import SDWebImage
 
 class DetailTopTableViewCell: UITableViewCell {
     @IBOutlet weak var appIconImageView: UIImageView!
@@ -29,8 +30,13 @@ class DetailTopTableViewCell: UITableViewCell {
 
 extension DetailTopTableViewCell: ApplicationDetailProtocolForInteractor {
     func prepare(by data: ApplicationDetailModel?) {
+        titleLabel.text = data?.trackCensoredName
         starRatingView.rating = data?.averageUserRatingForCurrentVersion ?? 0.0
         userRatingCountLabel.text = "(\(data?.userRatingCountForCurrentVersion ?? 0))"
+        if let appIconImageURL = data?.artworkUrl100 {
+            appIconImageView.sd_setImage(with: URL(string: appIconImageURL))
+        }
+        
     }
 }
 

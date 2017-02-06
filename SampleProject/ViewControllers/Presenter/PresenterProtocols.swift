@@ -14,6 +14,6 @@ protocol TableViewPresenteralbe {
     func cell(at indexPath: IndexPath) -> UITableViewCell
 }
 
-protocol TableViewSelectable {
+protocol TableViewCellSelectable {
     func didSelect(at indexPath: IndexPath)
 }

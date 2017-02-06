@@ -39,7 +39,7 @@ extension HomeInterator: DataLoadable {
     }
 }
 
-extension HomeInterator: CellInteratorable {
+extension HomeInterator: CellMakable {
     func cell(at indexPath: IndexPath, of tableView: UITableView ) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(for: indexPath) as TopFreeApplicationTableViewCell
         if let topFreeApplication = dataProvider.topFreeApplications?[safeIndex: indexPath.row] {
