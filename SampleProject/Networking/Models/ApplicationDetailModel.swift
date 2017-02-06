@@ -9,6 +9,10 @@
 import Foundation
 import ObjectMapper
 
+protocol ApplicationDetailProtocolForInteractor {
+    func prepare(by data: ApplicationDetailModel?)
+}
+
 class ApplicationDetailModel: Mappable {
     var artworkUrl100: String?
     var screenshotUrls: [String]?

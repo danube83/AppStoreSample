@@ -9,6 +9,10 @@
 import Foundation
 import ObjectMapper
 
+protocol TopFreeApplicationProtocolForInteractor {
+    func prepare(by data: TopFreeApplicationModel, rank: Int)
+}
+
 class TopFreeApplicationModel: Mappable {
     var title: String?
     var appIconImageURL: String?

@@ -9,10 +9,6 @@
 import UIKit
 import SDWebImage
 
-protocol TopFreeApplicationProtocolForInteractor {
-    func prepare(by data: TopFreeApplicationModel, rank: Int)
-}
-
 class TopFreeApplicationTableViewCell: UITableViewCell {
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!

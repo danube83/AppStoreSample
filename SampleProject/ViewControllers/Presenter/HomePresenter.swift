@@ -8,12 +8,8 @@
 
 import UIKit
 
-protocol TableViewPresenteralbe {
-    var tableView: UITableView? {get}
+protocol HomePresenterable: TableViewPresenteralbe {
     func viewControllerDidLoad()
-    func countOfItem() -> Int
-    func didSelect(at indexPath: IndexPath)
-    func cell(at indexPath: IndexPath) -> UITableViewCell
 }
 
 class HomePresenter {
@@ -26,7 +22,7 @@ class HomePresenter {
 }
 
 
-extension HomePresenter: TableViewPresenteralbe {
+extension HomePresenter: HomePresenterable {
     var tableView: UITableView? {
         return viewController?.tableView
     }
@@ -40,15 +36,17 @@ extension HomePresenter: TableViewPresenteralbe {
     func cell(at indexPath: IndexPath) -> UITableViewCell {
         return interactor.cell(at: indexPath, of: tableView!)
     }
+    
+    func countOfItem() -> Int {
+        return interactor.countOfItem
+    }
+}
 
+extension HomePresenter: TableViewSelectable {
     func didSelect(at indexPath: IndexPath) {
         tableView?.deselectRow(at: indexPath, animated: true)
         selectedRow = indexPath.row
         viewController?.performSegue(withIdentifier: "showDetail", sender: self)
-    }
-    
-    func countOfItem() -> Int {
-        return interactor.countOfItem
     }
 }
 
@@ -58,3 +56,4 @@ extension HomePresenter: InteracterDelegate {
         tableView?.reloadData()
     }
 }
+

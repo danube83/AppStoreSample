@@ -8,12 +8,8 @@
 
 import Foundation
 
-protocol HomeDataProviderDelegate: class {
-    func didReceiveData()
-}
-
 class HomeDataProvider {
-    weak var delegate: HomeDataProviderDelegate?
+    weak var delegate: DataProviderDelegate?
     
     var topFreeApplications: [TopFreeApplicationModel]? {
         didSet {

@@ -8,29 +8,18 @@
 
 import UIKit
 
-protocol CellInteratorable {
-    func cell(at indexPath: IndexPath, of tableView: UITableView ) -> UITableViewCell
-}
 
-protocol DataLoadable {
-    func loadData()
-}
 
 protocol HomeDataAccessible {
     var countOfItem: Int {get}
     func applicationID(of row: Int)-> String?
 }
 
-protocol InteracterDelegate: class {
-    func finishedDataLoad()
-}
-
-
 class HomeInterator {
     let dataProvider = HomeDataProvider()
     weak var delegate: InteracterDelegate?
     init() {
-        dataProvider.delegate = self
+        self.dataProvider.delegate = self
     }
 }
 
@@ -61,8 +50,10 @@ extension HomeInterator: CellInteratorable {
     }
 }
 
-extension HomeInterator: HomeDataProviderDelegate {
+extension HomeInterator: DataProviderDelegate {
     func didReceiveData() {
         delegate?.finishedDataLoad()
     }
 }
+
+

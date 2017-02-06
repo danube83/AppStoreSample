@@ -24,6 +24,12 @@ class DetailDescTableViewCell: UITableViewCell {
     
 }
 
+extension DetailDescTableViewCell: ApplicationDetailProtocolForInteractor {
+    func prepare(by data: ApplicationDetailModel?) {
+        descriptionLabel.text = data?.description
+    }
+}
+
 extension DetailDescTableViewCell: ReusableView {
     
 }

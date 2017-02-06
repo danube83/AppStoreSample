@@ -25,8 +25,13 @@ class DetailTopTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-    
+}
+
+extension DetailTopTableViewCell: ApplicationDetailProtocolForInteractor {
+    func prepare(by data: ApplicationDetailModel?) {
+        starRatingView.rating = data?.averageUserRatingForCurrentVersion ?? 0.0
+        userRatingCountLabel.text = "(\(data?.userRatingCountForCurrentVersion ?? 0))"
+    }
 }
 
 
