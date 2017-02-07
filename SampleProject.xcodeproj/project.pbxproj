@@ -29,7 +29,6 @@
 		8AAAF2601E40C8C1005984B5 /* SampleProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAAF25F1E40C8C1005984B5 /* SampleProjectUITests.swift */; };
 		8AB219701E485CD6002A30D9 /* InteractorProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB2196F1E485CD6002A30D9 /* InteractorProtocols.swift */; };
 		8AB219721E485D0B002A30D9 /* DetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB219711E485D0B002A30D9 /* DetailInteractor.swift */; };
-		8AB219741E485DAF002A30D9 /* DataProviderProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB219731E485DAF002A30D9 /* DataProviderProtocols.swift */; };
 		8AB219761E485DD1002A30D9 /* DetailDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB219751E485DD1002A30D9 /* DetailDataProvider.swift */; };
 		8AB219781E485F28002A30D9 /* PresenterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB219771E485F28002A30D9 /* PresenterProtocols.swift */; };
 		8AB2197A1E485F52002A30D9 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB219791E485F52002A30D9 /* DetailPresenter.swift */; };
@@ -101,7 +100,6 @@
 		8AAAF2611E40C8C1005984B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8AB2196F1E485CD6002A30D9 /* InteractorProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractorProtocols.swift; sourceTree = "<group>"; };
 		8AB219711E485D0B002A30D9 /* DetailInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailInteractor.swift; sourceTree = "<group>"; };
-		8AB219731E485DAF002A30D9 /* DataProviderProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProviderProtocols.swift; sourceTree = "<group>"; };
 		8AB219751E485DD1002A30D9 /* DetailDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailDataProvider.swift; sourceTree = "<group>"; };
 		8AB219771E485F28002A30D9 /* PresenterProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresenterProtocols.swift; sourceTree = "<group>"; };
 		8AB219791E485F52002A30D9 /* DetailPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
@@ -218,7 +216,6 @@
 		8A71CB3B1E45BD1A0043C344 /* DataProvider */ = {
 			isa = PBXGroup;
 			children = (
-				8AB219731E485DAF002A30D9 /* DataProviderProtocols.swift */,
 				8A71CB3C1E45BD290043C344 /* HomeDataProvider.swift */,
 				8AB219751E485DD1002A30D9 /* DetailDataProvider.swift */,
 			);
@@ -466,6 +463,9 @@
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
 			mainGroup = 8AAAF2331E40C8C1005984B5;
 			productRefGroup = 8AAAF23D1E40C8C1005984B5 /* Products */;
 			projectDirPath = "";
@@ -665,7 +665,6 @@
 				8A1907A01E40CD5E00D2265B /* DetailViewController.swift in Sources */,
 				8AC24EF01E42117B00B065B8 /* TopFreeApplicationTableViewCell.swift in Sources */,
 				8AC24EF51E42189D00B065B8 /* StringExtension.swift in Sources */,
-				8AB219741E485DAF002A30D9 /* DataProviderProtocols.swift in Sources */,
 				8A1907A61E40D0CD00D2265B /* API.swift in Sources */,
 				8AC24F071E443EE600B065B8 /* DetailDescTableViewCell.swift in Sources */,
 				8AC24EF81E421AFC00B065B8 /* HairlineConstant.swift in Sources */,

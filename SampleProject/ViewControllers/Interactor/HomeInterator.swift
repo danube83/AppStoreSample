@@ -18,9 +18,6 @@ protocol HomeDataAccessible {
 class HomeInterator {
     let dataProvider = HomeDataProvider()
     weak var delegate: InteracterDelegate?
-    init() {
-        self.dataProvider.delegate = self
-    }
 }
 
 extension HomeInterator: HomeDataAccessible {
@@ -35,7 +32,9 @@ extension HomeInterator: HomeDataAccessible {
 
 extension HomeInterator: DataLoadable {
     func loadData() {
-        dataProvider.loadHomeData()
+        dataProvider.loadHomeData { [weak self] in
+            self?.delegate?.finishedDataLoad()
+        }
     }
 }
 
@@ -50,10 +49,5 @@ extension HomeInterator: CellMakable {
     }
 }
 
-extension HomeInterator: DataProviderDelegate {
-    func didReceiveData() {
-        delegate?.finishedDataLoad()
-    }
-}
 
 

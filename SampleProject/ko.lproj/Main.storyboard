@@ -28,7 +28,7 @@
         <!--Home View Controller-->
         <scene sceneID="TP7-E0-X2A">
             <objects>
-                <viewController id="6NA-Xu-6K0" customClass="HomeViewController" customModule="SampleProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="6NA-Xu-6K0" customClass="HomeViewController" customModule="SampleProject" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="AEQ-T5-iU5"/>
                         <viewControllerLayoutGuide type="bottom" id="TSd-tA-4GE"/>

@@ -11,13 +11,10 @@ import XCTest
 @testable import SampleProject
 
 class HomeTests: XCTestCase {
-    let presenter = HomePresenter()
-    let tableView = UITableView()
+    let dataProvider = HomeDataProvider()
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        tableView.register(TopFreeApplicationTableViewCell.self)
-        presenter.viewControllerDidLoad()
         
     }
     
@@ -27,19 +24,20 @@ class HomeTests: XCTestCase {
     }
     
     func testLoadData() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            let countOfItem = self.presenter.countOfItem()
-            XCTAssert(countOfItem > 0)
+        
+        let asyncExpectation = expectation(description: "load Data")
+        dataProvider.loadHomeData {
+            
+            XCTAssertNotNil(self.dataProvider.topFreeApplications)
+            asyncExpectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 3) { error in
+            if let error = error {
+                print("timeout error \(error)")
+            }
+            
         }
     }
-    
-    func testMakeCell() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            let cell = self.presenter.cell(at: IndexPath(row: 0, section: 0), of: self.tableView)
-            XCTAssertNil(cell)
-        }
-    }
-    
 }
+

@@ -27,5 +27,7 @@ class TopFreeApplicationModel: Mappable {
         appIconImageURL <- map["im:image.1.label"]
         identifier <- map["id.attributes.im:id"]
     }
+    
+    
 }
 

@@ -9,22 +9,23 @@
 import Foundation
 
 class HomeDataProvider {
-    weak var delegate: DataProviderDelegate?
     
-    var topFreeApplications: [TopFreeApplicationModel]? {
-        didSet {
-            delegate?.didReceiveData()
-        }
-    }
+    var topFreeApplications: [TopFreeApplicationModel]?
     
-    
-    func loadHomeData() {
+    func loadHomeData(completion: @escaping ()->()) {
         let api = topFreeApplicationAPI()
         send(api: api, keyPath: "feed.entry") { [weak self] (response: [TopFreeApplicationModel]?) in
+            
+            defer {
+                completion()
+            }
+            
             guard let unwrappedResponse = response else {
                 return
             }
             self?.topFreeApplications = unwrappedResponse
+            
+            
         }
     }
 }
