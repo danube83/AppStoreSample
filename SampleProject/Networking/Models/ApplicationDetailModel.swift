@@ -9,7 +9,7 @@
 import Foundation
 import ObjectMapper
 
-protocol ApplicationDetailProtocolForInteractor {
+protocol ApplicationDetailProtocolForInteractor: class{
     func prepare(by data: ApplicationDetailModel?)
 }
 
@@ -36,4 +36,22 @@ class ApplicationDetailModel: Mappable {
         description <- map["description"]
     }
     
+}
+
+extension ApplicationDetailModel {
+    var title: String {
+        return trackCensoredName ?? ""
+    }
+    var starRating: Double {
+        return averageUserRatingForCurrentVersion ?? 0.0
+    }
+    var ratingCount: Int {
+        return userRatingCountForCurrentVersion ?? 0
+    }
+    var applicationIcon: String {
+        return artworkUrl100 ?? ""
+    }
+    var descriptionText: String {
+        return description ?? ""
+    }
 }

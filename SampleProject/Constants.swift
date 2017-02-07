@@ -12,8 +12,3 @@ struct ApiPaths {
     static let topFreeApplications = "/%@/rss/topfreeapplications/limit=50/genre=%d/json"
     static let applicationDetail = "/lookup"
 }
-
-struct ScreenSize {
-    static let width = UIScreen.main.bounds.width
-    static let height = UIScreen.main.bounds.height
-}

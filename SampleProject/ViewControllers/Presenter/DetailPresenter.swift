@@ -13,10 +13,8 @@ protocol DetailPresenterable: TableViewPresenteralbe {
 }
 
 class DetailPresenter {
-    let interactor = DetailInteractor()
+    fileprivate let interactor = DetailInteractor()
     weak var viewController: DetailViewController?
-    var selectedRow = -1
-    
     init() {
         self.interactor.delegate = self
     }
@@ -36,8 +34,8 @@ extension DetailPresenter: DetailPresenterable {
         interactor.loadData()
     }
     
-    func cell(at indexPath: IndexPath) -> UITableViewCell {
-        return interactor.cell(at: indexPath, of: tableView!)
+    func cell(at indexPath: IndexPath, of tableView: UITableView) -> UITableViewCell {
+        return interactor.cell(at: indexPath, of: tableView)
     }
     
     func countOfItem() -> Int {

@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="179.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="179"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XCI-aY-aWQ">
@@ -41,7 +41,7 @@
                         </constraints>
                     </activityIndicatorView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Bu-jm-Bhe" userLabel="BottomLineView">
-                        <rect key="frame" x="0.0" y="179" width="320" height="1"/>
+                        <rect key="frame" x="0.0" y="178" width="320" height="1"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="P6x-QE-pHb">

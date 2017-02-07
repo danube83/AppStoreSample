@@ -10,7 +10,7 @@ target 'SampleProject' do
   pod 'ObjectMapper'
   pod 'AlamofireObjectMapper'
   pod 'Cosmos'
-
+  
   target 'SampleProjectTests' do
     inherit! :search_paths
     # Pods for testing

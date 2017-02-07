@@ -42,6 +42,6 @@ extension DetailViewController: UITableViewDataSource {
     
     @available(iOS 2.0, *)
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return presenter.cell(at: indexPath)
+        return presenter.cell(at: indexPath, of: tableView)
     }
 }

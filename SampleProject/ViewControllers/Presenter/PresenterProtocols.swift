@@ -11,7 +11,7 @@ import UIKit
 protocol TableViewPresenteralbe {
     var tableView: UITableView? {get}
     func countOfItem() -> Int
-    func cell(at indexPath: IndexPath) -> UITableViewCell
+    func cell(at indexPath: IndexPath, of tableView: UITableView) -> UITableViewCell
 }
 
 protocol TableViewCellSelectable {

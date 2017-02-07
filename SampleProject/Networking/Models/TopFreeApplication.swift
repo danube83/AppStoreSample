@@ -9,7 +9,7 @@
 import Foundation
 import ObjectMapper
 
-protocol TopFreeApplicationProtocolForInteractor {
+protocol TopFreeApplicationProtocolForInteractor: class {
     func prepare(by data: TopFreeApplicationModel, rank: Int)
 }
 

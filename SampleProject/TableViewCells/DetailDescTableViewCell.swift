@@ -10,7 +10,6 @@ import UIKit
 
 class DetailDescTableViewCell: UITableViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
-
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -26,7 +25,11 @@ class DetailDescTableViewCell: UITableViewCell {
 
 extension DetailDescTableViewCell: ApplicationDetailProtocolForInteractor {
     func prepare(by data: ApplicationDetailModel?) {
-        descriptionLabel.text = data?.description
+        guard let data = data else {
+            return
+        }
+
+        descriptionLabel.text = data.descriptionText
     }
 }
 

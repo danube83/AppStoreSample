@@ -30,12 +30,14 @@ class DetailTopTableViewCell: UITableViewCell {
 
 extension DetailTopTableViewCell: ApplicationDetailProtocolForInteractor {
     func prepare(by data: ApplicationDetailModel?) {
-        titleLabel.text = data?.trackCensoredName
-        starRatingView.rating = data?.averageUserRatingForCurrentVersion ?? 0.0
-        userRatingCountLabel.text = "(\(data?.userRatingCountForCurrentVersion ?? 0))"
-        if let appIconImageURL = data?.artworkUrl100 {
-            appIconImageView.sd_setImage(with: URL(string: appIconImageURL))
+        guard let data = data else {
+            return
         }
+        titleLabel.text = data.title
+        starRatingView.rating = data.starRating
+        userRatingCountLabel.text = "(\(data.ratingCount))"
+        appIconImageView.sd_setImage(with: URL(string: data.applicationIcon))
+        
         
     }
 }

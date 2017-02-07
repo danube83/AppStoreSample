@@ -12,6 +12,7 @@ import SDWebImage
 class DetailDataProvider {
     var applicationDetail: ApplicationDetailModel?
     
+    
     func loadDetailData(with applicationID: String, completion: @escaping ()->()) {
         let api = applicationDetailAPI(with: applicationID)
         send(api: api, keyPath: "results") { [weak self] (response: ApplicationDetailModel?) in

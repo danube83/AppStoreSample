@@ -13,11 +13,15 @@ protocol HomePresenterable: TableViewPresenteralbe {
 }
 
 class HomePresenter {
-    let interactor = HomeInterator()
+    fileprivate let interactor = HomeInterator()
     weak var viewController: HomeViewController?
-    var selectedRow = -1
+    fileprivate var selectedRow = -1
     var applicationID: String? {
         return interactor.applicationID(of: selectedRow)
+    }
+    
+    init() {
+        self.interactor.delegate = self
     }
 }
 
@@ -29,12 +33,11 @@ extension HomePresenter: HomePresenterable {
     
     func viewControllerDidLoad () {
         tableView?.register(TopFreeApplicationTableViewCell.self)
-        interactor.delegate = self;
         interactor.loadData()
     }
     
-    func cell(at indexPath: IndexPath) -> UITableViewCell {
-        return interactor.cell(at: indexPath, of: tableView!)
+    func cell(at indexPath: IndexPath, of tableView: UITableView) -> UITableViewCell {
+        return interactor.cell(at: indexPath, of: tableView)
     }
     
     func countOfItem() -> Int {

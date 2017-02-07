@@ -41,7 +41,7 @@ extension HomeViewController: UITableViewDataSource {
     @available(iOS 2.0, *)
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        return presenter.cell(at: indexPath)
+        return presenter.cell(at: indexPath, of: tableView)
     }
     
 }
@@ -55,27 +55,6 @@ extension HomeViewController: UITableViewDelegate {
 }
 
 
-//MARK: prepare for segue
-extension HomeViewController {
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let identifier = segue.identifier else {
-            return
-        }
-        
-        switch identifier {
-        case "showDetail":
-            guard let destination = segue.destination as? DetailViewController else {
-                return
-            }
-            
-            if let applicationID = presenter.applicationID {
-                destination.applicationID = applicationID
-            }
-            
-        default:
-            return
-        }
-    }
-}
+
 
 

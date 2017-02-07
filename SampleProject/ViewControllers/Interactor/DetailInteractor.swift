@@ -8,7 +8,7 @@
 
 import UIKit
 
-fileprivate enum DetailCell: Int {
+enum DetailCell: Int {
     case top = 0
     case imageSlide
     case description
